@@ -65,7 +65,7 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_valid
     end
 
-    it 'is invalid with ill-formed email' do 
+    it 'is invalid with ill-formed email' do
       user = create_a_user
       expect(user).to be_valid
 

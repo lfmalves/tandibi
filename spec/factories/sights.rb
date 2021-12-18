@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: sights
@@ -19,6 +21,6 @@
 FactoryBot.define do
   factory :sight do
     place { nil }
-    activity_type { "MyString" }
+    activity_type { 'MyString' }
   end
 end

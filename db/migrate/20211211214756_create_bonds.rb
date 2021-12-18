@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateBonds < ActiveRecord::Migration[6.1]
   def change
     create_table :bonds do |t|
@@ -8,7 +10,7 @@ class CreateBonds < ActiveRecord::Migration[6.1]
       t.timestamps
     end
 
-    add_index :bonds, [:user_id, :friend_id], unique: true
+    add_index :bonds, %i[user_id friend_id], unique: true
     add_foreign_key :bonds, :users, column: :user_id
     add_foreign_key :bonds, :users, column: :friend_id
   end

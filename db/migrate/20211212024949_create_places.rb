@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreatePlaces < ActiveRecord::Migration[6.1]
   def change
     create_table :places do |t|
@@ -9,8 +11,8 @@ class CreatePlaces < ActiveRecord::Migration[6.1]
       t.timestamps
     end
 
-    add_index :places, :locale 
+    add_index :places, :locale
     add_index :places, :coordinate, using: :gist
-    add_index :places, [:locale, :coordinate], unique: true
+    add_index :places, %i[locale coordinate], unique: true
   end
 end

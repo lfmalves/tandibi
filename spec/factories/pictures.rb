@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: pictures
@@ -14,7 +16,7 @@
 #
 FactoryBot.define do
   factory :picture do
-    post_id { "" }
-    caption { "MyString" }
+    post_id { '' }
+    caption { 'MyString' }
   end
 end

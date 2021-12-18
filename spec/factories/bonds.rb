@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: bonds
@@ -20,8 +22,8 @@
 #
 FactoryBot.define do
   factory :bond do
-    user_id { "" }
-    friend_id { "" }
-    state { "MyString" }
+    user_id { '' }
+    friend_id { '' }
+    state { 'MyString' }
   end
 end

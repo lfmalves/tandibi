@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: places
@@ -18,9 +20,9 @@
 #
 FactoryBot.define do
   factory :place do
-    locale { "MyString" }
-    coordinate { "" }
-    name { "MyString" }
-    place_type { "MyString" }
+    locale { 'MyString' }
+    coordinate { '' }
+    name { 'MyString' }
+    place_type { 'MyString' }
   end
 end

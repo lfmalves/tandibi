@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: statuses
@@ -9,6 +11,6 @@
 #
 FactoryBot.define do
   factory :status do
-    text { "MyString" }
+    text { 'MyString' }
   end
 end
