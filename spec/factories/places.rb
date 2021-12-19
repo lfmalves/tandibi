@@ -21,7 +21,7 @@
 FactoryBot.define do
   factory :place do
     locale { 'en' }
-    coordinate { "POINT (1 2 3)" }
+    coordinate { 'POINT (1 2 3)' }
     name { ['Heores del Chaco Caffe', 'Restaurante Malvinas Argentinas'].sample }
     place_type { 'coffee_shop' }
   end
