@@ -25,8 +25,8 @@ require 'rails_helper'
 RSpec.describe Bond, type: :model do
   describe '#valid?' do
     it 'should validate the state correctly' do
-      user = User.create email: 'e1@example.org', first_name: 'Edwin', username: 'e1'
-      friend = User.create email: 'a1@example.com', first_name: 'Werner', username: 'a1'
+      user = build(:user)
+      friend = build(:user)
       bond = Bond.new user: user, friend: friend
 
       expect(bond).not_to be_valid

@@ -20,7 +20,7 @@
 #
 FactoryBot.define do
   factory :sight do
-    place { nil }
-    activity_type { 'MyString' }
+    place { build(:place) }
+    activity_type { 'checkin' }
   end
 end
