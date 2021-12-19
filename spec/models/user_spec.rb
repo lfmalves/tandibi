@@ -21,27 +21,23 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  def create_a_user(email: "#{SecureRandom.hex(4)}@example.org")
-    User.create!(first_name: 'Adam', email: email, username: SecureRandom.hex(4))
-  end
-
   describe '#valid?' do
     it 'is valid when email is unique' do
-      user = create_a_user
+      user = create(:user)
 
       expect(user.valid?).to be true
     end
 
     it 'is invalid when email is taken' do
-      create_a_user(email: 'adam@example.org')
+      first_user = create(:user, email: 'adam@example.org')
 
-      user = User.new
+      user = User.new first_name: 'Abramovich'
       user.email = 'adam@example.org'
       expect(user).not_to be_valid
     end
 
     it 'is valid when username is unique' do
-      user = create_a_user
+      user = create(:user)
 
       expect(user.valid?).to be true
     end
@@ -55,7 +51,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'is invalid is first_name is blank' do
-      user = create_a_user
+      user = create(:user)
       expect(user).to be_valid
 
       user.first_name = ''
@@ -66,7 +62,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'is invalid with ill-formed email' do
-      user = create_a_user
+      user = create(:user)
       expect(user).to be_valid
 
       user.email = ''
@@ -91,10 +87,10 @@ RSpec.describe User, type: :model do
 
   describe '#followings' do
     it 'can list all of the user\'s followings' do
-      user = create_a_user
-      friend1 = create_a_user
-      friend2 = create_a_user
-      friend3 = create_a_user
+      user = create(:user)
+      friend1 = create(:user)
+      friend2 = create(:user)
+      friend3 = create(:user)
 
       Bond.create user: user, friend: friend1, state: Bond::FOLLOWING
       Bond.create user: user, friend: friend2, state: Bond::FOLLOWING
@@ -107,12 +103,12 @@ RSpec.describe User, type: :model do
 
   describe '#followers' do
     it 'can list all of the user\'s followers' do
-      u1 = create_a_user
-      u2 = create_a_user
-      f1 = create_a_user
-      f2 = create_a_user
-      f3 = create_a_user
-      f4 = create_a_user
+      u1 = create(:user)
+      u2 = create(:user)
+      f1 = create(:user)
+      f2 = create(:user)
+      f3 = create(:user)
+      f4 = create(:user)
 
       Bond.create user: f1, friend: u1, state: Bond::FOLLOWING
       Bond.create user: f2, friend: u1, state: Bond::FOLLOWING
@@ -121,6 +117,19 @@ RSpec.describe User, type: :model do
 
       expect(u1.followers).to eq([f1, f2])
       expect(u2.followers).to eq([f3])
+    end
+  end
+
+  describe '#save' do 
+    it 'correctly capitalizes name' do 
+      user = create(:user)
+
+      user.first_name = 'ZeeV'
+      user.last_name = 'von Yabotinsky'
+      user.save 
+
+      expect(user.first_name).to eq 'Zeev'
+      expect(user.last_name).to eq 'von Yabotinsky'
     end
   end
 end
