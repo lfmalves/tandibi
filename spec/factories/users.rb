@@ -21,9 +21,9 @@
 FactoryBot.define do
   factory :user do
     username { SecureRandom.hex(3) }
-    first_name { ['Zeev', 'Lazar', 'Yacov'].sample }
-    last_name { ['Cohen', 'Rabinovich', 'Rosembaum'].sample }
-    email { "#{ SecureRandom.hex(4)}@irgun.org.il" }
+    first_name { %w[Zeev Lazar Yacov].sample }
+    last_name { %w[Cohen Rabinovich Rosembaum].sample }
+    email { "#{SecureRandom.hex(4)}@irgun.org.il" }
     is_public { true }
   end
 end

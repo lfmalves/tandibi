@@ -120,13 +120,13 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe '#save' do 
-    it 'correctly capitalizes name' do 
+  describe '#save' do
+    it 'correctly capitalizes name' do
       user = create(:user)
 
       user.first_name = 'ZeeV'
       user.last_name = 'von Yabotinsky'
-      user.save 
+      user.save
 
       expect(user.first_name).to eq 'Zeev'
       expect(user.last_name).to eq 'von Yabotinsky'
