@@ -29,7 +29,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'is invalid when email is taken' do
-      first_user = create(:user, email: 'adam@example.org')
+       create(:user, email: 'adam@example.org')
 
       user = User.new first_name: 'Abramovich'
       user.email = 'adam@example.org'
