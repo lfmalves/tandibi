@@ -31,9 +31,6 @@ RSpec.describe Bond, type: :model do
 
       expect(bond).not_to be_valid
 
-      bond.state = 'waiting'
-      expect(bond).not_to be_valid
-
       Bond::STATES.each do |state|
         bond.state = state
         expect(bond).to be_valid
